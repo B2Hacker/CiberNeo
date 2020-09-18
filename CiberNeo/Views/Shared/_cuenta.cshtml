@@ -1,0 +1,15 @@
+﻿
+@using CiberNeo.Models
+
+    <ul class="">
+        @if (Session["Usuario"] == null)
+        {
+            <p>No se encuentra registrado, inicie sesion e intente de nuevo</p>
+        }
+        else
+        {
+        
+        Usuario usuario = Session["Usuario"] as Usuario;
+        <p> @usuario.Nombre @usuario.Paterno @usuario.Materno</p>
+        }
+    </ul>

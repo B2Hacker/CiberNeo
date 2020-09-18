@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CiberNeo.Models.Producto>
+
+@{
+    ViewBag.Title = "Busqueda de productos";
+}
+<link href="~/Plugins/DataTables/datatables.min.css" rel="stylesheet" />
+<script src="~/Plugins/DataTables/datatables.js"></script>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-7">&nbsp;</div>
+    <div class="col-md-5">
+        <form id="form1" method="post">
+            <div class="input-group">
+                <div class="input-group-addon">Buscar</div>
+                <input type="text" class="form-control" id="Texto" name="Texto" required autocomplete="off" />
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-success">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<h5>Resultados de la busqueda</h5>
+<hr />
+<table class="table table-striped table-bordered" id="TablaProductos">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Marca</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Nombre</td>
+            <td>@item.Precio</td>
+            <td>@item.Marca</td>
+            <td>@item.Cantidad</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    // Inicializa la tabla de productos con los estilos y comportamiento de DataTable
+    $(document).ready(function () {
+        $('#TablaProductos').DataTable({
+            dom: 'Bfrtip',
+            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        });
+    });
+</script>

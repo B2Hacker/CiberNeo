@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h1></h1>
+<div class="jumbotron">
+    <h1>Bienvenido Administrador</h1>
+    <p class="lead">Bienvenido al control de inventario de "Cibercafe Neo", para continuar de clic en la parte del inventario que desea editar o para cerrar sesion clic en el boton de abajo</p>
+    <p>
+        @Html.ActionLink("Ir a la vista principal", "Inicio", "Principal", new { Area = "Inicio" }, new { @class = "btn btn-primary btn-lg" } )
+    </p>
+</div>
+<hr />
+<div>
+    <h1 class="text-center"> ¿Que se puede hacer desde la ventana de administrador? </h1>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h2>Realizar inventarios de manera facil</h2>
+        <p>En esta vista de administrador puede editar los elementos del inventario, asi como crear y editar usuarios, cliente y realizar cotizaciones, todo esto desde la comodidad de esta pagina.</p>
+        <a class="btn btn-default" @Html.ActionLink("Ir a los productos →", "Index", "Producto") </a>
+    </div>
+    <div class="col-md-4">
+        <h2>Realizar busquedas de productos</h2>
+        <p>Como funcion adicional puede realizar busquedas de productos especificos desde la ventana buscar, donde podra editar, eliminar o agregar productos y tambien imprimir el inventario actual en diferentes formatos..</p>
+        <a class="btn btn-default" @Html.ActionLink("Ir a el buscador →", "Busqueda", "Producto") </a>
+    </div>
+    <div class="col-md-4">
+        <h2>Crear cotizaciones y ventas</h2>
+        <p>Puede realizar ventas directamente desde la ventana de cotizaciones, y al realizar la venta se descontaran automaticamente los productos vendidos del inventario actual y se guardara la info de la venta.</p>
+        <a class="btn btn-default" @Html.ActionLink("Ir a las cotizaciones →", "Cotizaciones", "Producto") </a>
+    </div>
+</div>

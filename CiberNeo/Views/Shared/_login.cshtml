@@ -1,0 +1,15 @@
+﻿
+@using CiberNeo.Models
+
+<li class="nav navbar-nav">
+    @if (Session["Usuario"] == null)
+    {
+
+    }
+    else
+    {
+        Usuario usuario = Session["Usuario"] as Usuario;
+        <li><a href="../../Cuenta/Cliente">@usuario.Nombre @usuario.Paterno</a></li>
+        <li><a class="active" href="../../Login/Logout">Cerrar Sesion</a></li>    
+    }
+</li>

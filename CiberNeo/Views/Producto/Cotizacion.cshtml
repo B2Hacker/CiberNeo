@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Cotización";
+}
+
+<h2>Cotización</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <label class="control-label">Producto</label>
+        <select id="Productos" name="Productos" class="form-control">
+            <option value="">Seleccione un producto</option>
+            @foreach (var p in ViewBag.Productos)
+            {
+                <option value="@p.IdProducto" data-precio="@p.Precio">@p.Nombre</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label class="control-label">Cliente</label>
+        <select id="Clientes" name="Clientes" class="form-control">
+            <option value="">Seleccione un cliente</option>
+            @foreach (var p in ViewBag.Clientes)
+            {
+                <option value="@p.IdCliente">@p.Nombre</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-1">
+        <label class="control-label">Precio</label>
+        <input type="text" class="form-control" id="Precio" readonly />
+    </div>
+    <div class="col-md-1">
+        <label class="control-label">Cantidad</label>
+        <input type="number" class="form-control" id="Cantidad" />
+    </div>
+    <div class="col-md-2">
+        <label class="control-label">&nbsp;</label><br />
+        <input type="button" class="btn btn-primary" value="Agregar" id="btnAgregar" />
+    </div>
+</div>
+
+<hr />
+
+<form id="form1" method="post">
+    <div class="row">
+        <div class="col-md-12">Productos en la lista de salida</div>
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th style="display:none;">Id</th>
+                        <th>Producto</th>
+                        <th style="display:none;">IdCliente</th>
+                        <th>Cliente</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Opción</th>
+                    </tr>
+                </thead>
+                <tbody id="ListaProductos"></tbody>
+            </table>
+        </div>
+        <div class="col-md-12 text-center">
+            <input type="submit" class="btn btn-primary" value="Registrar" />
+        </div>
+    </div>
+</form>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#Productos').change(function () {
+            var precio = $('#Productos option:selected').data('precio')
+            $('#Precio').val(precio);
+            $('#Cantidad').val('1');
+        });
+
+        $('#btnAgregar').click(function () {
+            var id = $('#Productos').val();
+            var producto = $('#Productos option:selected').text();
+            var idcliente = $('#Clientes').val();
+            var cliente = $('#Clientes option:selected').text();
+            var cantidad = parseInt($('#Cantidad').val());
+            var precio = Math.round(parseFloat($('#Precio').val()), 2);
+            var subtotal = cantidad * precio * 1.08;
+            var idtr = 'Salida' + id + $('#Cantidad').val();
+            $('#ListaProductos').append(
+                '<tr id="' + idtr + '">' +
+                '<td style="display:none;"><input type="number" name="Producto" value="' + id + '" readonly/></td>' +
+                '<td>' + producto + '</td>' +
+                '<td style="display:none;"><input type="number" name="Cliente" value="' + idcliente + '" readonly/></td>' +
+                '<td>' + cliente + '</td>' +
+                '<td><input type="number" name="Cantidad" value="' + cantidad + '" readonly/></td>' +
+                '<td>' + subtotal + '</td>' +
+                '<td><input type="button" class="btn btn-danger eliminar" data-id=' + idtr + ' value="Eliminar"/></td>' +
+                '</tr>'
+            );
+            $('#Productos').val('');
+            $('#Clientes').val('');
+            $('#Cantidad').val('');
+            $('#Precio').val('');
+        });
+
+        $('#ListaProductos').on('click', '.eliminar', function () {
+            var id = $(this).data('id');
+            $('#' + id).remove();
+        });
+    });
+
+
+</script>

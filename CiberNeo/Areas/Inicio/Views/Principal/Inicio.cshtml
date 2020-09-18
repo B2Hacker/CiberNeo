@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = "~/Areas/Inicio/Views/Shared/Layout.cshtml";
+}
+
+<section class="billboard">
+    <div class="wrapper">
+        <div class="caption">
+            <p>Bienvenidos a Ciber Cafe Neo</p>
+
+        </div>
+    </div>
+</section><!--  End Billboard  -->
+
+<section class="features" style=" height: 280px ">
+
+    <div class="wrapper">
+        <div class="feature">
+            <div class="ficon">
+                <img src="~/Areas/Inicio/img/IconoXboxAzul.png" alt="">
+            </div>
+            <div class="details_exp">
+                <h3>Renta de videojuegos de Xbox One ®</h3>
+                <p>Contamos con una amplia variedad de videojuegos para el Xbox One.</p>
+                <a>@Html.ActionLink("Ver catálogo →", "Catalogo", "Principal", null, new { @area = "Inicio" })</a>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="ficon">
+                <img src="~/Areas/Inicio/img/IconoPlayAzul.png" alt="">
+            </div>
+            <div class="details_exp">
+                <h3>Renta de videojuegos de PlayStation 4®</h3>
+                <p>Tambien contamos con videojuegos online de esta consola para ti y hasta 4 amigos</p>
+                <a>@Html.ActionLink("Ver catálogo →", "Catalogo", "Principal", null, new { @area = "Inicio" })</a>
+            </div>
+        </div>
+        <div class="feature">
+            <div class="ficon">
+                <img src="~/Areas/Inicio/img/IconoComputadora.png" alt="">
+            </div>
+            <div class="details_exp">
+                <h3>Servicio de renta de computadoras</h3>
+                <p>Ademas, puedes rentar una computadora por hora para realizar trabajos, ver videos o lo que quieras!.</p>
+                <a>@Html.ActionLink("Ver Catálogo →", "Catalogo", "Principal", null, new { @area = "Inicio" })</a>
+            </div>
+        </div>
+     </div>
+</section>
+

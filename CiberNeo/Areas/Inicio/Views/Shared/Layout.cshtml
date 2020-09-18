@@ -1,0 +1,63 @@
+﻿@using CiberNeo.Models;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Ciber Neo Inicio</title>
+    <meta charset="utf-8">
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Inicio/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="~/Areas/Inicio/css/main_responsive.css">
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Areas/Inicio/js/jquery.js"></script>
+    <script type="text/javascript" src="~/Areas/Inicio/js/carouFredSel.js"></script>
+    <script type="text/javascript" src="~/Areas/Inicio/js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+
+            <img src="~/Areas/Inicio/img/Logo Ciber neo (Blanco).png" height="55" width="200" alt="Logo" class="logo">
+            <a href="#" class="menu_icon" id="menu_icon"></a>
+            <nav id="nav_menu">
+                <ul>
+                    <li class="active">@Html.ActionLink("Inicio", "Inicio", "Principal", new { Area = "Inicio" }, null)</li>
+                    <li class="active">@Html.ActionLink("Catálogo", "Catalogo", "Principal", new { @area = "Inicio" }, null)</li>
+                    <li class="active">@Html.ActionLink("Ubicación", "Ubicacion", "Principal", new { @area = "Inicio" }, null)</li>
+                    <li class="active">
+                        @if (Session["Usuario"] == null)
+                        {
+                            <a class="active" href="../../Login/Index">Iniciar Sesión</a>
+                        }
+                        else
+                        {
+                        @Html.Partial("_login")
+                        }
+                    
+                    </ul>
+            </nav>
+
+            <ul class="social">
+                <li><a class="fb" href="http://www.facebook.com/davidzoza2"></a></li>
+                <li><a class="twitter" href="http://www.twitter.com/thedarkzoza"></a></li>
+                <li><a class="gplus" href="http://www.google.com/accounts"></a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <img src="~/Areas/Inicio/img/Logo Ciber neo (Blanco).png" height="85" width="300">
+        <p class="rights">Todos los derechos reservados, Ciber cafe Neo © 2019 </p>
+    </footer><!--  End Footer  -->
+
+</body>
+</html>
+

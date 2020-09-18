@@ -1,0 +1,37 @@
+﻿@model CiberNeo.Models.Usuario
+
+@{
+    ViewBag.Title = "Recovery";
+    Layout = "~/Areas/Inicio/Views/Shared/Layout.cshtml";
+}
+
+<h2>Recovery</h2>
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4 col-sm-3">&nbsp;</div>
+    <div class="col-md-4 col-sm-6">
+        <form id="form1" method="post">
+            <h4>Recuperar cuenta de usuario</h4>
+            <hr />
+            <label class="control-label">Usuario / Correo electrónico</label>
+            <input type="text" class="form-control" id="Busqueda" name="Busqueda" required />
+            <hr />
+            <input type="submit" class="btn btn-primary" value="Recuperar" />
+            <br />
+            @Html.ActionLink("Iniciar sesión", "Index", "Login")
+
+            @if (ViewBag.Mensaje != null)
+            {
+                <br />
+                <div class="alert alert-warning">
+                    @ViewBag.Mensaje
+                </div>
+            }
+        </form>
+    </div>
+    <div class="col-md-4 col-sm-3">&nbsp;</div>
+</div>
+
+

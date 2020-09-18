@@ -1,0 +1,46 @@
+﻿@using CiberNeo.Models;
+
+    <ul>
+        @if (Session["Usuario"] == null)
+        {
+
+        }
+        else
+        {
+            Usuario usuario = Session["Usuario"] as Usuario;
+            <p class="text-capitalize badge">Informacion del usuario</p>
+            <hr />
+            <table>
+                <thead>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nombre:</td>
+                        <td>@usuario.Nombre</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Apellido Paterno: </td>
+                        <td>@usuario.Paterno</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Apellido Materno:</td>
+                        <td>@usuario.Materno</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nombre de usuario</td>
+                        <td>@usuario.Username</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contraseña:</td>
+                        <td>@usuario.Password</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Correo Electronico:</td>
+                        <td>@usuario.CorreoElectronico</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        }
+    </ul>

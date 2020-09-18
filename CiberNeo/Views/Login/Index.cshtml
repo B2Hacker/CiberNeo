@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Inicio/Views/Shared/Layout.cshtml";
+}
+    <section>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-4 col-sm-3">&nbsp;</div>
+            <div class="col-md-4 col-sm-6">
+                <form id="form1" method="post">
+                    <h6>Log in</h6>
+                    <hr />
+                    <label class="control-label">Username</label>
+                    <input type="text" id="Username" name="Username" class="form-control" required />
+                    <label class="control-label">Password</label>
+                    <input type="password" id="Password" name="Password" class="form-control" required />
+                    <hr />
+                    <input type="submit" class="btn btn-primary" value="Sign in" />
+                    <br />
+                    @Html.ActionLink("Recovery", "Recovery", "Login")
+                    <hr />
+
+                    @if (ViewBag.Mensage != null)
+                    {
+                        <div class="alert alert-warning">
+                            @ViewBag.Mensage
+                        </div>
+                    }
+                </form>
+            </div>
+            <div class="col-md-4 col-sm-3">&nbsp;</div>
+        </div>
+    </section>
